@@ -31,9 +31,14 @@ boltLength.setMM(20)
 
 def headParts  = (ArrayList<CSG> )ScriptingEngine.gitScriptRun("https://gist.github.com/e67b5f75f23c134af5d5054106e3ec40.git", "AnimatronicHead.groovy" ,  [false] )
 println "Loading head"
-CSG scannedHead =  ScriptingEngine.gitScriptRun("https://github.com/madhephaestus/Halloween2016.git", "KevinHarringtonScan_moved.stl" ,  null )
-				.movex(-40)
-				.movez(-30)
+CSG scannedHead =   new Sphere(40)// Spheres radius
+				.toCSG()// convert to CSG to display
+				.union(
+					 new Sphere(40)// Spheres radius
+					.toCSG()// convert to CSG to display
+					.movex(10)
+				)
+				
 				
 println "Making cutout"
 CSG cutout = scannedHead
