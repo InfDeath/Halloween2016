@@ -18,13 +18,13 @@ LengthParameter boltLength		= new LengthParameter("Bolt Length",10,[18,10])
 servoSizeParam.setStrValue("hv6214mg")
 hornSizeParam.setStrValue("hv6214mg_1")
 boltSizeParam.setStrValue("8#32")
-headDiameter.setMM(300)
-snoutLen.setMM(250)
-eyeCenter.setMM(200)
+headDiameter.setMM(355)
+snoutLen.setMM(255)
+eyeCenter.setMM(230)
 leyeDiam.setMM(100)
 reyeDiam.setMM(100)
 jawHeight.setMM(85)
-upperHeadDiam.setMM(40)
+upperHeadDiam.setMM(80)
 eyemechRadius.setMM(15)
 thickness.setMM(6)
 boltLength.setMM(20)
@@ -33,12 +33,16 @@ def headParts  = (ArrayList<CSG> )ScriptingEngine.gitScriptRun("https://gist.git
 println "Loading head"
 CSG scannedHead =   new Sphere(105)// Spheres radius
 				.toCSG()// convert to CSG to display
+				.movez(50)
 				.union(
-					 new Sphere(105)// Spheres radius
+					 new Sphere(100)// Spheres radius
 					.toCSG()// convert to CSG to display
 					.movex(40)
+					.movez(80)
 				)
-				.movez(80)
+				.movex(-10)
+				.movez(-30)
+				
 				
 println "Making cutout"
 CSG cutout = scannedHead
